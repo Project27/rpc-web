@@ -1,0 +1,30 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: rpc-web
+  cloud:
+    zookeeper:
+      connect-string: ${ZOOKEEPER_SERVER:ip:port}
+    config:
+      profile: ${SPRING_PROFILE:dev}
+      label: master_attex
+      discovery:
+        enabled: true
+        service-id: nnuo-config-server-zk
+
+referenceGroup: ${SPRING_REFERENCE:daily}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    servlet:
+      context-path: /monitor
+
+
+
+
+
